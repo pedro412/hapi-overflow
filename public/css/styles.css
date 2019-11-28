@@ -17,11 +17,51 @@ h1, p {
     margin-bottom: 10px;
 }
 
+input {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    padding: 7px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    height: 40px;
+}
+
+label {
+    color: #545454;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.mt-3 {
+    margin-top: 15px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.btn {
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #2196f3;
+}
+
 .navbar {
     display: flex;
     align-items: center;
     background-color: #fff;
     height: 62px;
+    justify-content: space-between;
 }
 
 .navbar-logo {
@@ -36,10 +76,35 @@ h1, p {
     text-decoration: none;
 }
 
+.menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 15px;
+}
+
+.menu-item {
+    padding: 0 5px;
+}
+
+.menu-item > a {
+    text-decoration: none;
+    color: inherit;
+    border: solid 1px grey;
+    border-radius: 10px;
+    padding: 10px;
+}
+
 .container {
     padding-top: 25px;
     max-width: 70%;
     margin: auto;
+}
+
+.form-group {
+    padding: 5px;
+    margin-bottom: 10px;
 }
 
 
