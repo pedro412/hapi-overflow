@@ -15,6 +15,20 @@ const createUser = async (request, h) => {
   return h.response(`User created: ${result}`)
 }
 
+const validateUser = async (request, h) => {
+  let result
+
+  try {
+    result = await users.validateUser(request.payload)
+  } catch (error) {
+    console.error(error)
+    return h.response('wrong credentials').code(500)
+  }
+
+  return h.response(result)
+}
+
 module.exports = {
-  createUser
+  createUser,
+  validateUser
 }
