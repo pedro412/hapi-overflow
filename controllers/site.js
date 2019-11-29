@@ -2,19 +2,22 @@
 
 const home = (request, h) => {
   return h.view('index', {
-    title: 'Home'
+    title: 'Home',
+    user: request.state.user
   })
 }
 
 const register = (request, h) => {
   return h.view('register', {
-    title: 'Register'
+    title: 'Register',
+    user: request.state.user
   })
 }
 
 const login = (request, h) => {
   return h.view('login', {
-    title: 'Login'
+    title: 'Login',
+    user: request.state.user
   })
 }
 

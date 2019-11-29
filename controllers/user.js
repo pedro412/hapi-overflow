@@ -20,15 +20,26 @@ const validateUser = async (request, h) => {
 
   try {
     result = await users.validateUser(request.payload)
+    if (!result) {
+      return h.response('Wrong credentials').code(401)
+    }
   } catch (error) {
     console.error(error)
     return h.response('wrong credentials').code(500)
   }
 
-  return h.response(result)
+  return h.redirect('/').state('user', {
+    name: result.name,
+    email: result.email
+  })
+}
+
+const logout = (request, h) => {
+  return h.redirect('/login').unstate('user')
 }
 
 module.exports = {
   createUser,
-  validateUser
+  validateUser,
+  logout
 }
