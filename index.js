@@ -49,4 +49,12 @@ const init = async () => {
   console.log(`Server running on ${server.info.uri}`)
 }
 
+process.on('unhandledRejection', error => {
+  console.error(`UnhandledRejection: ${error}`)
+})
+
+process.on('uncaughtException', error => {
+  console.error(`uncaughtException: ${error}`)
+})
+
 init()

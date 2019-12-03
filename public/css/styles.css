@@ -34,6 +34,27 @@ label {
     margin-bottom: 5px;
 }
 
+.alert {
+    padding: 8px 18px;
+    width: 100%;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.alert-success {
+    color: #fff;
+    background-color: green;
+}
+
+.alert-danger {
+    color: #fff;
+    background-color: red;
+}
+
 .mt-3 {
     margin-top: 15px;
 }

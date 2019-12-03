@@ -1,6 +1,13 @@
 <div>
     <h1>Login</h1>
     <p>Login with your account or create a new one.</p>
+
+    {{#with error}}
+    <div class="alert alert-danger" role="alert">
+        {{this}}
+    </div>
+    {{/with}}
+
     <form method="POST" action="/validate-user">
         <div class="form-group">
             <label for="email">Email</label>

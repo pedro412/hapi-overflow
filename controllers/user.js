@@ -1,18 +1,25 @@
 'use strict'
 
 const users = require('../models/index').users
+const Boom = require('@hapi/boom')
 
 const createUser = async (request, h) => {
-  let result
+  console.log('aca')
 
   try {
-    result = await users.createUser(request.payload)
+    await users.createUser(request.payload)
+
+    return h.view('register', {
+      title: 'register',
+      success: 'User created successfully'
+    })
   } catch (error) {
     console.error(error)
-    return h.response('Error creating new user').code(500)
+    return h.view('register', {
+      title: 'register',
+      error: 'Error creating user'
+    })
   }
-
-  return h.response(`User created: ${result}`)
 }
 
 const validateUser = async (request, h) => {
@@ -20,18 +27,25 @@ const validateUser = async (request, h) => {
 
   try {
     result = await users.validateUser(request.payload)
-    if (!result) {
-      return h.response('Wrong credentials').code(401)
+    if (result === 'wrong credentials') {
+      return h.view('login', {
+        title: 'login',
+        error: 'Wrong Credentials'
+      })
     }
+
+    return h.redirect('/').state('user', {
+      name: result.name,
+      email: result.email
+    })
   } catch (error) {
     console.error(error)
     return h.response('wrong credentials').code(500)
   }
+}
 
-  return h.redirect('/').state('user', {
-    name: result.name,
-    email: result.email
-  })
+const failValidation = (request, h, error) => {
+  return Boom.badRequest('User validation failed', request.payload)
 }
 
 const logout = (request, h) => {
@@ -41,5 +55,6 @@ const logout = (request, h) => {
 module.exports = {
   createUser,
   validateUser,
-  logout
+  logout,
+  failValidation
 }
